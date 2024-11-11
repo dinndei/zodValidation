@@ -16,7 +16,7 @@ const userSchema = z.object({
 // סוג הנתונים עבור הטופס
 type UserData = z.infer<typeof userSchema>;
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
   // הגדרת הטופס עם react-hook-form ו-zod לאימות
   const { register, handleSubmit, formState: { errors } } = useForm<UserData>({
     resolver: zodResolver(userSchema),
@@ -99,4 +99,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default Page;
