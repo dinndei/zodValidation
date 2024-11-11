@@ -3,6 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Swal from 'sweetalert2'
 
 // הגדרת סכמת המשתמש לאימות
 const userSchema = z.object({
@@ -20,7 +21,7 @@ const page: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<UserData>({
     resolver: zodResolver(userSchema),
     defaultValues: {
-      name: "דוגמה",
+      name: "john dogh",
       email: "example@example.com",
       age: 20,
       isAdmin: true,
@@ -30,6 +31,11 @@ const page: React.FC = () => {
   // פונקציה שמטפלת בהגשת הטופס
   const onSubmit = (data: UserData) => {
     console.log("נתונים תקינים:", data);
+    Swal.fire({
+        title: "אלופים!",
+        text: "הנתונים שלכם מצוינים",
+        icon: "success"
+      });
   };
 
   return (
